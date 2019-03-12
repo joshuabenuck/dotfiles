@@ -1,0 +1,61 @@
+############################################
+# Brewfile
+# https://robots.thoughtbot.com/brewfile-a-gemfile-but-for-homebrew
+############################################
+# To use, simply run
+# > brew tap homebrew/bundle && brew bundle
+############################################
+
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+# Problem installing grip:
+# ==> Installing grip dependency: python
+# ==> Downloading https://homebrew.bintray.com/bottles/python-3.7.2_2.mojave.bottle.tar.gz
+# ==> Pouring python-3.7.2_2.mojave.bottle.tar.gz
+# Error: An unexpected error occurred during the `brew link` step
+# Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+# The formula built, but is not symlinked into /usr/local
+# Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+# Installing grip has failed!
+
+# Solution:
+# https://github.com/Homebrew/homebrew-core/issues/19286
+# sudo mkdir /usr/local/Frameworks
+# sudo chown ${whoami}:admin /usr/local/Frameworks
+
+#brew 'awscli'
+#brew 'bash'
+#brew 'coreutils'
+brew 'ctags'
+#brew 'curl'
+#brew 'dnsmasq'
+#brew 'fortune'
+#brew 'fzf'                 # fuzzy file finder
+brew 'git'
+#brew 'gnupg2'
+#brew 'gnu-tar'
+brew 'grip'                # GitHub style Markdown live previews
+#brew 'htop-osx'
+brew 'hub'
+brew 'jq'
+#brew 'lua'
+#brew 'neofetch'            # system info
+#brew 'neovim'
+#brew 'netcat'
+#brew 'nmap'
+#brew 'nyancat'
+#brew 'openssl'
+#brew 'pinentry-mac'
+#brew 'spark'               # sparklines
+#brew 'the_silver_searcher'
+#brew 'tig'
+brew 'tmux'
+#brew 'tree'
+#brew 'watch'
+#brew 'wget'
+brew 'zsh'
+
+#tap "homebrew/cask-fonts"
+#cask "font-hack-nerd-font" # Hack font glyphs
+
