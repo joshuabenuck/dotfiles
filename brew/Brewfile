@@ -41,7 +41,7 @@ brew 'hub'
 brew 'jq'
 #brew 'lua'
 #brew 'neofetch'            # system info
-#brew 'neovim'
+brew 'neovim'
 #brew 'netcat'
 #brew 'nmap'
 #brew 'nyancat'

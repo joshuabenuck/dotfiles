@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 me=`basename $0`
 dir=`dirname $0`
@@ -13,14 +13,38 @@ install() {
   stow -t ~ "$1"
 }
 
+rerun_if_changed() {
+  if [ ! -d ~/.dotfiles ]; then
+    mkdir ~/.dotfiles
+  fi
+  hash_file=~/.dotfiles/$(basename $1)
+  if [ ! -f $1 ]; then
+    echo "Failure. '$1' doesn't exist!"
+    return 1
+  fi
+  old_hash=$(cat $hash_file 2>/dev/null | awk '{print $1}')
+  new_hash=$(shasum -a 512 $1 2>/dev/null | awk '{print $1}')
+  if [[ "$old_hash" == "$new_hash" ]]; then
+    echo "Not changed: $1. Skipped: $2"
+    return
+  fi
+  eval $2
+  if [[ $? -ne 0 ]]; then
+    echo "Update command failed: $1 -- $2"
+    return
+  fi
+  echo $new_hash > $hash_file
+}
+
 # install Mac configs
 if [[ "$(uname)" == "Darwin" ]]; then
   for pkg in {brew,}; do
     install "$pkg"
   done
+  rerun_if_changed ~/Brewfile "cd ~ && brew bundle"
 fi
 
-for pkg in {tmux,vim}; do
+for pkg in {tmux,nvim}; do
   install "$pkg"
 done
 
