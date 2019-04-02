@@ -44,7 +44,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   rerun_if_changed ~/Brewfile "cd ~ && brew bundle"
 fi
 
-for pkg in {tmux,nvim}; do
+for pkg in {config,ctags,tmux}; do
   install "$pkg"
 done
 
