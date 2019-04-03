@@ -19,6 +19,7 @@ map <leader>r :source ~/.config/nvim/init.vim<CR>
 map <leader>i :edit ~/.config/nvim/init.vim<CR>
 map <leader>. :edit .<CR>
 map <leader>c :set cursorcolumn!<CR>
+map <leader>h :set hls!<CR>
 
 call plug#begin()
 Plug 'ludovicchabant/vim-gutentags' ", { 'for': ['go', 'java', 'python', 'ruby', 'conf', 'javascript'] }
