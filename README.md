@@ -10,7 +10,7 @@ The dotfiles themselves are symlinked into your home directory using the GNU sto
 # Tweaks of note
 
 ## vim
-  * <leader>h: toggle highlight search
-  * <leader>l: toggle columncursor
-  * <leader>f: fzf Files ex command
+  * \<leader\>h: toggle highlight search
+  * \<leader\>l: toggle columncursor
+  * \<leader\>f: fzf Files ex command
 
