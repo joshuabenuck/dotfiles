@@ -31,7 +31,7 @@ brew 'ctags'
 #brew 'curl'
 #brew 'dnsmasq'
 #brew 'fortune'
-#brew 'fzf'                 # fuzzy file finder
+brew 'fzf'                 # fuzzy file finder
 brew 'git'
 #brew 'gnupg2'
 #brew 'gnu-tar'
@@ -48,12 +48,12 @@ brew 'neovim'
 #brew 'openssl'
 #brew 'pinentry-mac'
 #brew 'spark'               # sparklines
-#brew 'the_silver_searcher'
+brew 'the_silver_searcher'
 #brew 'tig'
 brew 'tmux'
 #brew 'tree'
 #brew 'watch'
-#brew 'wget'
+brew 'wget'
 brew 'zsh'
 
 #tap "homebrew/cask-fonts"

@@ -2,7 +2,12 @@ syntax enable
 filetype plugin on
 
 set nu
-autocmd FileType coffee setlocal sw=2 ts=2 et ai
+augroup coffee
+    autocmd!
+    autocmd FileType coffee setlocal sw=2 ts=2 et ai
+    autocmd FileType coffee setlocal foldmethod=indent
+augroup END
+
 autocmd FileType javascript setlocal sw=2 ts=2 et ai
 
 set omnifunc=syntaxcomplete#Complete
@@ -19,9 +24,14 @@ map <leader>r :source ~/.config/nvim/init.vim<CR>
 map <leader>i :edit ~/.config/nvim/init.vim<CR>
 map <leader>. :edit .<CR>
 map <leader>c :set cursorcolumn!<CR>
+map <leader>f :Files<CR>
 map <leader>h :set hls!<CR>
 
 call plug#begin()
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags' ", { 'for': ['go', 'java', 'python', 'ruby', 'conf', 'javascript'] }
 Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -43,4 +53,18 @@ let g:gutentags_cache_dir = '~/.config/nvim/ctags'
 
 " Plugins
 map <leader>t :NERDTreeToggle<CR>
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" bind \ (backward slash) to grep shortcut
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+nnoremap <leader>s :Ag<SPACE>
+
+" bind K to grep word under cursor
+nnoremap K :Ag <C-R><C-W><CR>
 
