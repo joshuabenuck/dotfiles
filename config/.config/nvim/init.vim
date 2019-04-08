@@ -5,11 +5,16 @@ set nu
 augroup coffee
     autocmd!
     autocmd FileType coffee setlocal sw=2 ts=2 et ai
-    autocmd FileType coffee setlocal foldmethod=indent
+    autocmd FileType coffee setlocal foldmethod=indent foldlevel=3
 augroup END
 
-autocmd FileType javascript setlocal sw=2 ts=2 et ai
+augroup javascript
+    autocmd!
+    autocmd FileType javascript setlocal sw=2 ts=2 et ai
+    autocmd FileType javascript setlocal foldmethod=syntax foldlevel=3
+augroup END
 
+let javaScript_fold=1
 set omnifunc=syntaxcomplete#Complete
 
 colorscheme elflord
@@ -35,6 +40,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags' ", { 'for': ['go', 'java', 'python', 'ruby', 'conf', 'javascript'] }
 Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 " Configuration
