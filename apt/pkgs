@@ -1,5 +1,5 @@
 #!/bin/sh
 
 sudo apt update
-sudo apt install -y stow wget curl git neovim
+sudo apt install -y stow wget curl git neovim silversearcher-ag exuberant-ctags
 
