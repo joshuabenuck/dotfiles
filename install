@@ -53,6 +53,22 @@ for pkg in {config,ctags,tmux}; do
   install "$pkg"
 done
 
+if [[ ! -e ~/.deno ]]; then
+  curl -fsSL https://deno.land/x/install/install.sh | sh
+  echo 'export PATH=~/.deno/bin:$PATH' >> ~/.bash_aliases
+else
+  deno upgrade
+fi
+
+if [[ ! -e ~/.cargo ]]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup-init.sh
+  chmod +x rustup-init.sh
+  ./rustup-init.sh -y
+  echo 'export PATH=~/.cargo/bin:$PATH' >> ~/.bash_aliases
+else
+  rustup update
+fi
+
 # Resume previous directory
 cd - > /dev/null
 
